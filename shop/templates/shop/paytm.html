@@ -1,0 +1,33 @@
+{% extends 'shop/basic.html'%}
+{% load static %}
+
+   {% block body %}
+<div class="container my-2">
+<h1>Redirecting you to the merchant....</h1>
+<h1>Please do not refresh your page....</h1>
+<form action="https://securegw-stage.paytm.in/order/process/" method="post" name="paytm">
+
+          {% for key, value in param_dict.items %}
+    <input type="hidden" name="{{key}}" value="{{value}}">
+    {% endfor %}
+
+</form>
+</div>
+
+{% endblock %}
+{% block js%}
+
+document.paytm.submit();
+{% if flag1 %}
+      alert("Your Order Has been Placed...");
+      localStorage.clear();
+      window.location = "http://127.0.0.1:8000/";
+    {% endif %}
+
+    {% if ver%}
+      alert("Please Enter all Details Properly");
+     {% endif %}
+
+
+{% endblock %}
+

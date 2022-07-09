@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h2>Blog Home Page</h2>
-</body>
-</html>
+{% extends 'blog/basic.html'%}
+{% load static%}
+
+{% block body%}
+<div class="container my-2">
+
+  <div class="jumbotron p-3 p-md-7 text-white rounded bg-dark">
+    <div class="col-md-12 px-0">
+      <h1 class="display-4 font-italic">Ecommerce blog post</h1>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    {% for p in allpost %}
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0">{{p.title}}</h3>
+          <div class="mb-1 text-muted">{{p.pub_date}}</div>
+          <p class="card-text mb-auto">{{p.desc|slice:"0:40"}}..</p>
+          <a href="/blog/blogpost/{{p.bid}}" class="stretched-link">
+
+            Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img class="bd-placeholder-img" width="200" height="250"
+               src="/media/{{p.blog_image}}" />
+
+        </div>
+      </div>
+    </div>
+    {% if forloop.counter|divisibleby:2%}
+    </div>
+   <div class="row mb-2">
+     {% endif %}
+     {% endfor %}
+   </div>
+  </div>
+{% endblock %}

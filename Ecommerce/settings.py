@@ -127,3 +127,14 @@ MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+PAYTM_MERCHANT_KEY = "gpup7U%PxQ1T6y8u"
+PAYTM_MERCHANT_ID = "byLVwz55811088203547"
+HOST_URL = "http://localhost:8080"
+PAYTM_CALLBACK_URL = "/paymentstauts/"
+
+if DEBUG:
+    PAYTM_MERCHANT_KEY = "gpup7U%PxQ1T6y8u"
+    PAYTM_MERCHANT_ID = "byLVwz55811088203547"
+    PAYTM_WEBSITE = 'WEB_STAGING'
+    HOST_URL = 'http://localhost:8000'
